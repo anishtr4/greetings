@@ -135,7 +135,7 @@
 
 
  
-             <div data-page="output" class="page cached">
+             <div data-page="output" class="page cached output">
    <div class="navbar">
               <div class="navbar-inner">
              
@@ -211,6 +211,7 @@ real = 'http://wlapaper.coolpage.biz/test.php?cardname='+imgsrc+'&name='+name+'&
   myApp.showPreloader('Please wait')
  
 $$('.original').attr("src", real);
+$$("#theDiv").append("<img id='theImg' src='"+real+"'/>");
 $$('.original').on('load',function(){
           myApp.hidePreloader();
      });
