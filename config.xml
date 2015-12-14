@@ -128,7 +128,10 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <access origin="http://wlapaper.coolpage.biz" />
+    <access origin="http://wlapaper.coolpage.biz" subdomains="true"/>
+    <access origin="http://wlapaper.coolpage.biz/test.php?" subdomains="true"/>
+    <access subdomains="true" uri="*" />
+    <allow-navigation href="*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
