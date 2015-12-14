@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.material.min.css">
+      <link rel="stylesheet" href="css/framework7.material.colors.css">
+       <link rel="stylesheet" href="css/kitchen-sink.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+    <style>
+	#tab1
+	{
+		overflow:hidden;
+	}
+	</style>
+  </head>
+  <body class="layout-light theme-purple">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-cover">
+      <div class="content-block">
+        <p>Left panel content goes here</p>
+        <a href="#about" class="item-link close-panel">
+<div class="item-content">
+<div class="item-inner">
+<div class="item-title">About</div>
+</div>
+</div></a>
+      </div>
+    </div>
+    <!-- Right panel with cover effect-->
+    <div class="panel panel-right panel-cover">
+      <div class="content-block">
+        <p>Right panel content goes here</p>
+      </div>
+    </div>
+    <!-- Views, and they are tabs-->
+    <!-- We need to set "toolbar-through" class on it to keep space for our tab bar-->
+    <div class="views">
+      <div class="view view-main" data-page="index">
+        <div class="pages navbar-fixed">
+          
+        <div data-page="index" class="page page-on-center">
+            <div class="navbar">
+              <div class="navbar-inner">
+             
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                   <div class="center">Express your love</div>
+              </div>
+            </div>
+            <div class="page-content">
+      
+ <a href="#about?image=image1&font=arial" class="item-link">
+<div class="card">
+<div class="card-content">
+<div class="card-content-inner"><img src="thumb/image1.jpg"></div>
+</div>
+</div>
+</a>
+ <a href="#about?image=image2&font=lariss" class="item-link">
+<div class="card">
+<div class="card-content">
+<div class="card-content-inner"><img src="thumb/image2.jpg"></div>
+</div>
+</div>
+</a>
+            
+             <div data-page="about" class="page cached">
+   <div class="navbar">
+              <div class="navbar-inner">
+             
+                <div class="left"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                   <div class="center">Express your love</div>
+              </div>
+            </div>
+<div class="page-content">
+<div class="content-block">
+<p>
+<form id="demoform-1" class="store-data list-block inputs-list">
+<ul>
+<li><img  class="demoiapp" src=""></li>
+<li>
+<div class="item-content">
+<div class="item-media"><i class="icon icon-form-name"></i></div>
+<div class="item-inner">
+<div class="item-title label">Name</div>
+<div class="item-input item-input-field">
+<input type="text" placeholder="Your name" name="name" class="">
+</div>
+</div>
+</div>
+</li>
+<li>
+<div class="item-content">
+
+<div class="item-inner">
+</div>
+</div>
+</li>
+<li>
+<div class="item-content">
+
+<div class="item-inner">
+
+<a href="#output" class="item-link button button-raised button-fill color-purple submit">Purple</a>
+
+</div>
+</li>
+<li>
+
+</li>
+
+
+</ul>
+</form>
+
+</p>
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+ 
+             <div data-page="output" class="page cached">
+   <div class="navbar">
+              <div class="navbar-inner">
+             
+                <div class="left"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                   <div class="center">Share it</div>
+              </div>
+            </div>
+<div class="page-content">
+<div class="content-block">
+<p>
+<img class="original" src="" style="max-width:100%;" onClick="changeimage(this.src)">
+</p>
+
+
+
+
+</div>
+</div>
+</div>
+      
+        
+             <a href="#" class="floating-button color-pink" ><i class="icon icon-plus"></i></a>
+        
+          </div>
+          </div>
+      </div>
+    </div>
+
+
+ 
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/kitchen-sink.js"></script>
+    <script src="js/jquery-2.1.4.js"></script>
+
+
+  <script>
+
+var myApp=new Framework7({modalTitle:'Framework7',material:true,});var $$=Dom7;var mainView=myApp.addView('.view-main',{dynamicNavbar:true,domCache:true});
+
+ var changeimage = function (_src)
+  {
+	   alert(_src);
+   window.plugins.socialsharing.share(null, null, 'www/emoji/'+file+'', null);
+  }
+ 
+  
+
+ 
+ 
+var $$ = Dom7;
+var real;
+ myApp.onPageBeforeAnimation('about', function (page) {
+	
+console.log(page.query.image);
+$$('.demoiapp').attr("src", 'thumb/'+page.query.image+'.jpg');
+$$('.demoiapp').attr("data-img", page.query.image);
+$$('.demoiapp').attr("data-font", page.query.font);
+});
+ 
+
+$$('.submit').on('click', function() {
+var name = $('form').find('input[name="name"]').val();
+var imgsrc = $$('form').find('img').attr('data-img');
+var font = $$('form').find('img').attr('data-font');
+real = 'http://wlapaper.coolpage.biz/test.php?cardname='+imgsrc+'&name='+name+'&font='+font+'&xpos=700&ypos=900'
+  });
+
+ 
+  myApp.onPageBeforeAnimation('output', function (page) {
+	
+  myApp.showPreloader('Please wait')
+ 
+$$('.original').attr("src", real);
+$$('.original').on('load',function(){
+          myApp.hidePreloader();
+     });
+});
+ /*
+//- One group, three buttons
+$$('.floating-button').on('click', function () {
+    var buttons = [
+        {
+            text: 'Whatsapp',
+            bold: true,
+			 onClick: function () {
+                sahreviawhastpp();
+            }
+        },
+        {
+            text: 'Facebook',
+			 onClick: function () {
+                sahreviafacebook();
+            }
+        },
+        {
+            text: 'Cancel',
+            color: 'red'
+        },
+    ];
+    myApp.actions(buttons);
+});*/
+ 
+
+  </script>
+  </body>
+</html>
