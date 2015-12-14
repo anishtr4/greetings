@@ -210,8 +210,9 @@ real = 'http://wlapaper.coolpage.biz/test.php?cardname='+imgsrc+'&name='+name+'&
 	
   myApp.showPreloader('Please wait')
  
-$$('.original').attr("src", real);
-$$("#theDiv").append("<img id='theImg' src='"+real+"'/>");
+//$$('.original').attr("src", real);
+alert(real);
+$$(".output .content-block").append("<img id='theImg' src='"+real+"'/>");
 $$('.original').on('load',function(){
           myApp.hidePreloader();
      });
